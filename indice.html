@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Semiótico Exclusivo - CRUBO</title>
+    <!-- Tipografías de alta elegancia editorial: Cinzel, Cormorant Garamond, Montserrat y Verdana -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@500;700;800&family=Verdana:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --verde-fondo: #003B18; 
+            --verde-gradiente: linear-gradient(135deg, #002B11 0%, #004D20 50%, #00220D 100%);
+            --dorado: #D4AF37;      
+            --dorado-brillante: #F3E5AB;
+            --verde-titulos: #005022; 
+            --bg-revista: #FFFFFF;  
+            --gris-lineas: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Calibri', 'Segoe UI', sans-serif;
+            background-color: #0F172A; 
+            margin: 0;
+            padding: 80px 20px 40px 20px;
+        }
+
+        .revista {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: var(--bg-revista);
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(0, 59, 24, 0.03) 0px, rgba(0, 59, 24, 0.03) 2px, transparent 2px, transparent 25px),
+                repeating-linear-gradient(-45deg, rgba(0, 59, 24, 0.03) 0px, rgba(0, 59, 24, 0.03) 2px, transparent 2px, transparent 25px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            padding: 70px 80px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            overflow: hidden;
+            
+            -webkit-print-color-adjust: exact !important; 
+            print-color-adjust: exact !important;
+        }
+
+        .encabezado-container {
+            position: relative;
+            margin: -70px -80px 60px -80px;
+            background: var(--verde-gradiente);
+            border-top: 5px solid var(--dorado);
+            border-bottom: 5px solid var(--dorado);
+            padding: 45px 50px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            z-index: 2;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.04) 0px, rgba(212, 175, 55, 0.04) 2px, transparent 2px, transparent 25px),
+                var(--verde-gradiente);
+        }
+
+        .linea1 {
+            font-family: 'Cinzel', serif;
+            font-size: 28pt; 
+            color: #FFFFFF; 
+            font-weight: 900; 
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+            line-height: 1.15;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+        }
+
+        .linea2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18pt; 
+            color: #F1F5F9;
+            font-style: italic;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .linea3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(10px, 1.45vw, 15pt); 
+            color: var(--dorado);
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-top: 1px solid rgba(212, 175, 55, 0.4);
+            padding-top: 12px;
+            display: block;
+        }
+
+        .card-export-wrapper {
+            background-color: #FFFFFF;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(0, 59, 24, 0.035) 0px, rgba(0, 59, 24, 0.035) 2px, transparent 2px, transparent 25px),
+                repeating-linear-gradient(-45deg, rgba(0, 59, 24, 0.035) 0px, rgba(0, 59, 24, 0.035) 2px, transparent 2px, transparent 25px);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            position: relative;
+            margin-bottom: 25px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-export-wrapper:hover {
+            border-color: var(--dorado);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.09);
+        }
+
+        .card-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
+        }
+
+        .badge-signo {
+            font-family: 'Cinzel', serif;
+            font-size: 11pt;
+            font-weight: 800;
+            color: var(--verde-fondo);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid var(--dorado);
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Barra flotante de control superior */
+        .control-toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--dorado);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .toolbar-titulo {
+            font-family: 'Cinzel', serif;
+            font-size: 12pt;
+            color: #FFFFFF;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .divisor-elegante {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .divisor-elegante::before, .divisor-elegante::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--dorado), transparent);
+        }
+        
+        .divisor-elegante span {
+            color: var(--verde-fondo);
+            font-size: 22px;
+            padding: 0 20px;
+        }
+
+        .grid-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            page-break-inside: avoid; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .columna-imagen {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #FFFFFF;
+            padding: 12px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            border: 1px solid #E2E8F0;
+            border-radius: 4px;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 400px; 
+            background-color: #0d2216;
+            border: 3px solid var(--dorado); 
+            padding: 6px; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-preview {
+            width: calc(100% - 12px);
+            height: calc(100% - 12px);
+            object-fit: contain;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+        }
+
+        .pie-de-foto {
+            text-align: center;
+            color: var(--verde-fondo);
+            font-family: 'Cinzel', serif;
+            font-size: 16pt; 
+            font-weight: 800; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 15px;
+            border-top: 2px solid var(--dorado);
+            padding-top: 10px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.1), transparent);
+        }
+
+        .content-wrapper {
+            flex: 1.25;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.98); 
+            padding: 24px;
+            border-radius: 6px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--verde-fondo);
+        }
+
+        .titulo-signo {
+            font-family: 'Cinzel', serif;
+            font-size: 18pt; 
+            color: var(--verde-titulos);
+            font-weight: 800;
+            text-align: left;
+            margin-top: 0;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--dorado);
+            letter-spacing: 0.5px;
+        }
+
+        .fila-pregunta {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px; 
+            padding-bottom: 8px; 
+            border-bottom: 1px solid var(--gris-lineas);
+        }
+
+        .fila-pregunta:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .pregunta {
+            font-family: 'Cormorant Garamond', 'Cinzel', serif; 
+            font-size: 14pt; 
+            font-weight: 700; 
+            color: #0F172A;
+            margin-bottom: 3px; 
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.2px;
+        }
+
+        .vineta {
+            color: var(--dorado);
+            font-size: 13pt;
+            margin-right: 8px;
+        }
+
+        .respuesta {
+            font-family: 'Calibri', 'Segoe UI', sans-serif; 
+            font-size: 11.5pt; 
+            color: #27272A;
+            text-align: justify;
+            line-height: 1.15; 
+            padding-left: 22px; 
+        }
+
+        @media print {
+            body { background-color: white; padding: 0; }
+            .control-toolbar { display: none !important; }
+            .revista { box-shadow: none; padding: 0; max-width: 100%; }
+            .encabezado-container { margin: 0 0 40px 0; width: 100%; box-sizing: border-box; }
+            .columna-imagen { box-shadow: none; border: none; }
+            .content-wrapper { box-shadow: none; border-left: 3px solid var(--verde-fondo); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="control-toolbar">
+        <div class="toolbar-titulo">
+            <span style="color: var(--dorado);">❖</span> CATÁLOGO SEMIÓTICO DIGITAL
+        </div>
+    </div>
+
+    <div class="revista">
+        
+        <div class="encabezado-container" id="encabezado-export">
+            <div class="linea1">CATÁLOGO SEMIÓTICO DE CHANGUINOLA</div>
+            <div class="linea2">Lectura de signos de nuestra comunidad</div>
+            <div class="linea3">Universidad de Panamá, Centro Regional Universitario de Bocas del Toro (CRUBO)</div>
+        </div>
+
+        <div class="card-export-wrapper" id="card-signo-1">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 01 / 10</span>
+            </div>
+            <div class="grid-item">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img1" class="img-preview" src="https://i.postimg.cc/Pq3pszTg/nobe.jpg" alt="La Nagua Ngäbe">
+                    </div>
+                    <div class="pie-de-foto">Signo No Lingüístico</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">1. La Nagua Ngäbe</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Vestimenta tradicional de la mujer de la etnia Ngäbe con diseños geométricos y colores vibrantes.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Identidad cultural, estatus social, profunda conexión con la naturaleza y herencia ancestral viva.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">Mujeres y niñas de la comunidad Ngäbe, con una amplia y orgullosa presencia en Changuinola.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A la propia comunidad como símbolo de cohesión, y a la sociedad externa como afirmación identitaria.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función expresiva (reafirma la identidad) y referencial (transmite la cosmovisión de su cultura).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Prenda de vestir artesanal.<br>Connotativo: Resistencia indígena, orgullo histórico, arte y tradición.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-2">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 02 / 10</span>
+            </div>
+            <div class="grid-item reverse">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img2" class="img-preview" src="https://i.postimg.cc/htV1BYYG/crub9.jpg" alt="Fachada del CRUBO">
+                    </div>
+                    <div class="pie-de-foto">Signo Arquitectónico / Institucional</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">2. Fachada del CRUBO</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">La sede principal del Centro Regional Universitario de Bocas del Toro (CRUBO), extensión de la Universidad de Panamá.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Educación superior, progreso académico, profesionalización y la presencia institucional del Estado en la región.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">Estudiantes universitarios, personal docente, administrativos y la comunidad académica en general.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A la sociedad bocatoreña, ofreciendo oportunidades de formación superior y desarrollo profesional continuo.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función referencial (identifica el recinto educativo) y apelativa (invita a la superación académica).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Infraestructura y edificación educativa universitaria.<br>Connotativo: Esperanza, superación personal, prestigio académico y futuro profesional.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-3">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 03 / 10</span>
+            </div>
+            <div class="grid-item">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img3" class="img-preview" src="https://i.postimg.cc/ncpqg9wh/domino.jpg" alt="Domino's Pizza" style="width: 85%; height: 85%; top: 7.5%; left: 7.5%; object-fit: contain;">
+                    </div>
+                    <div class="pie-de-foto">Signo Comercial / Franquicia</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">3. Local de Domino's Pizza</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Fachada y logotipo comercial de la franquicia internacional de restaurantes Domino's Pizza.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Servicio de comida rápida, modernidad comercial, globalización y un espacio de encuentro casual.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">La corporación multinacional para identificar su sucursal y punto de venta en la localidad.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A los consumidores locales, familias, jóvenes y visitantes que buscan una marca reconocida.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función apelativa (atrae al consumidor con colores llamativos) y referencial (indica el punto de venta).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Establecimiento comercial de venta de pizzas.<br>Connotativo: Estatus de consumo, penetración global en la comunidad y estandarización.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-4">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 04 / 10</span>
+            </div>
+            <div class="grid-item reverse">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img4" class="img-preview" src="https://i.postimg.cc/sDx3bdvr/taxi.jpg" alt="Taxis Amarillos">
+                    </div>
+                    <div class="pie-de-foto">Signo Mixto (Visual y Lingüístico)</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">4. Taxis Amarillos de Bocas del Toro</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Vehículos de transporte selectivo público, debidamente rotulados con la numeración y el color amarillo característico.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Disponibilidad inmediata de servicio de transporte local, conectando rutas hacia fincas bananeras o el centro urbano.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">Transportistas agremiados del sector automotor de Changuinola y usuarios en general.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A ciudadanos que requieren movilización, turistas y trabajadores agrícolas que transitan por el área.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función referencial (indica movilidad) e informativa (señala rutas y disponibilidad comercial).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Vehículo de alquiler autorizado.<br>Connotativo: Dinamismo urbano, control sindical del transporte y bullicio comercial cotidiano.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-5">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 05 / 10</span>
+            </div>
+            <div class="grid-item">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img5" class="img-preview" src="https://i.postimg.cc/CKxynbkh/extra.jpg" alt="Supermercado Xtra">
+                    </div>
+                    <div class="pie-de-foto">Signo Comercial / Marca Visual</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">5. Supermercado Xtra (Súper Extra)</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Fachada y rotulación comercial de la sucursal de esta popular cadena de supermercados en la comunidad.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Abastecimiento general, economía familiar, acceso a bienes de consumo masivo y desarrollo comercial.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">La cadena de supermercados para identificar y señalizar su punto de venta ante la población local.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A los consumidores locales, amas de casa, trabajadores y familias que buscan realizar sus compras.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función apelativa (atrae compradores con la promesa de ahorro) y referencial (identifica el establecimiento).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Establecimiento de venta de víveres y mercancía.<br>Connotativo: Quincena, ahorro, punto neurálgico de la economía local y movimiento de masas.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-6">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 06 / 10</span>
+            </div>
+            <div class="grid-item reverse">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img6" class="img-preview" src="https://i.postimg.cc/qvmbYS6r/sueter.jpg" alt="Suéter de Béisbol">
+                    </div>
+                    <div class="pie-de-foto">Signo Visual e Identidad Deportiva</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">6. Suéter de Béisbol de Bocas del Toro</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Prenda deportiva oficial (o réplica) que identifica al equipo de béisbol mayor de la provincia, conocidos como los "Tortugueros".</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Orgullo provincial, pasión por el deporte nacional, unidad comunitaria y apoyo incondicional al equipo local.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">Jugadores del equipo oficial y una gran parte de la fanaticada bocatoreña de todas las edades.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A la población general, fomentando hermandad, y a los rivales deportivos como símbolo de presencia y fortaleza.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función expresiva (reafirma el orgullo y pertenencia) y función de cohesión social (une a la provincia).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Prenda de vestir deportiva (uniforme).<br>Connotativo: Fanatismo, identidad territorial, alegría y celebración deportiva.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-7">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 07 / 10</span>
+            </div>
+            <div class="grid-item">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img7" class="img-preview" src="https://i.postimg.cc/kG9vDvRp/municioio.jpg" alt="Municipio de Changuinola">
+                    </div>
+                    <div class="pie-de-foto">Signo Arquitectónico / Institucional</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">7. Municipio de Changuinola</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">La sede administrativa gubernamental y el edificio de la alcaldía del distrito de Changuinola.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Autoridad local, orden civil, administración pública, burocracia y el poder político del distrito.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">Autoridades municipales, funcionarios públicos y ciudadanos que realizan trámites legales.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A toda la población del distrito de Changuinola que requiere servicios administrativos y de gobierno.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función referencial (identifica la institución gubernamental) y apelativa (representa la autoridad civil).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Edificio de administración pública.<br>Connotativo: Poder político, burocracia, civismo y control del Estado en la región.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-8">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 08 / 10</span>
+            </div>
+            <div class="grid-item reverse">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img8" class="img-preview" src="https://i.postimg.cc/Gpgp4L80/04ca5346-d12b-48a2-a820-2ac7058297da.jpg" alt="Letrero Manatíes">
+                    </div>
+                    <div class="pie-de-foto">Signo Ambiental / Preventivo</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">8. Letrero de Avistamiento de Manatíes</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Un letrero informativo y de advertencia ubicado en la ribera del río o área de humedales locales.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">La presencia de fauna marina protegida (manatíes) en peligro de extinción, exigiendo precaución al navegar.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">Autoridades ambientales (como MiAmbiente) y organizaciones locales de conservación ecológica.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A lancheros, boteros, pescadores y turistas que transitan o exploran estas vías acuáticas.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función referencial (informa sobre el hábitat) y apelativa (exige cuidado y reducción de velocidad).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Aviso de presencia de un mamífero acuático.<br>Connotativo: Ecoturismo, respeto por la biodiversidad, conservación y frágil ecosistema fluvial.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-9">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 09 / 10</span>
+            </div>
+            <div class="grid-item">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img9" class="img-preview" src="https://i.postimg.cc/dQmz6W6d/lancha.jpg" alt="Lancha de Transporte">
+                    </div>
+                    <div class="pie-de-foto">Signo Objetual / Medio de Transporte</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">9. Lancha de Transporte Acuático</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Una embarcación a motor fuera de borda, principal medio de transporte acuático en el archipiélago y vías fluviales.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Movilidad marítima, conectividad constante entre islas y tierra firme, y adaptación al entorno geográfico.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">Boteros, cooperativas de transporte marítimo, pescadores y operadores turísticos de la provincia.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A residentes, turistas, estudiantes y comerciantes que requieren movilizarse por el mar o los ríos.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función referencial (indica un vehículo operativo) y apelativa (ofrece el servicio de traslado acuático).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Vehículo de transporte por agua.<br>Connotativo: Vida caribeña, vitalidad del turismo, motor económico y la dependencia comunitaria del mar.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisor-elegante"><span>❖</span></div>
+
+        <div class="card-export-wrapper" id="card-signo-10">
+            <div class="card-top-bar">
+                <span class="badge-signo">SIGNO 10 / 10</span>
+            </div>
+            <div class="grid-item reverse">
+                <div class="columna-imagen">
+                    <div class="image-wrapper">
+                        <img id="img10" class="img-preview" src="https://i.postimg.cc/qRm2MH0t/cruce-peatonal.jpg" alt="Señal Zona Escolar">
+                    </div>
+                    <div class="pie-de-foto">Signo Visual e Iconográfico</div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="titulo-signo">10. Señal de Tránsito de Zona Escolar</div>
+                    
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué representa?</div>
+                        <div class="respuesta">Señalética vertical de tránsito en color amarillo fluorescente que muestra el pictograma de escolares cruzando la vía.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué significado comunica?</div>
+                        <div class="respuesta">Alerta de precaución extrema para los conductores, indicando la proximidad de un cruce peatonal y una zona de alto tránsito estudiantil.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Quién lo utiliza?</div>
+                        <div class="respuesta">La Autoridad de Tránsito y Transporte Terrestre (ATTT) en conjunto con el Ministerio de Obras Públicas e instituciones educativas locales.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿A quién va dirigido?</div>
+                        <div class="respuesta">A todos los conductores de vehículos públicos, privados y de carga que transitan por las vías adyacentes a las escuelas.</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Qué función comunicativa cumple?</div>
+                        <div class="respuesta">Función apelativa (exige al conductor reducir la velocidad y ceder el paso) y referencial (ubica espacialmente el paso de cebra).</div>
+                    </div>
+                    <div class="fila-pregunta">
+                        <div class="pregunta"><span class="vineta">❖</span>¿Su significado es denotativo o connotativo?</div>
+                        <div class="respuesta">Denotativo: Advertencia vial de cruce de peatones.<br>Connotativo: Cuidado y protección comunitaria, valorización de la vida infantil y educación vial.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
